@@ -1,12 +1,12 @@
 package com.ivantod.trancer.scene;
 
+import com.ivantod.trancer.geometry.Normal;
 import com.ivantod.trancer.util.color.Color;
 import com.ivantod.trancer.util.geom.Point;
-import com.ivantod.trancer.util.geom.Vector;
 
 public class ShadingInfo {
 
-	private Vector normal = new Vector();
+	private Normal normal = new Normal();
 	private Point localHitPoint = new Point();
 	private boolean objectHit = false;
 	private Color color = new Color();
@@ -32,10 +32,10 @@ t = 0;*/
 	
 	// getters and setters
 	
-	public Vector getNormal() {
+	public Normal getNormal() {
 		return normal;
 	}
-	public void setNormal(Vector normal) {
+	public void setNormal(Normal normal) {
 		this.normal = normal;
 	}
 	public Point getLocalHitPoint() {

@@ -2,6 +2,7 @@ package com.ivantod.trancer.primitive;
 
 import org.apache.commons.lang3.mutable.MutableDouble;
 
+import com.ivantod.trancer.geometry.Normal;
 import com.ivantod.trancer.geometry.Ray;
 import com.ivantod.trancer.scene.ShadingInfo;
 import com.ivantod.trancer.util.color.Color;
@@ -40,7 +41,7 @@ public class Sphere extends Shape {
 			t = (-b - e)/denom;  // smaller root
 			if (t > MathConst.EPSILON) {
 				tMin.setValue(t);
-				shadingInfo.setNormal( ray.getDirection().multiply(t).add(temp).divide(r) ); // (temp + ray.direction * t) / r
+				shadingInfo.setNormal( new Normal(ray.getDirection().multiply(t).add(temp).divide(r)) ); // (temp + ray.direction * t) / r
 				shadingInfo.setLocalHitPoint( ray.getOrigin().add(ray.getDirection().multiply(t)) ); // ray.origin + ray.direction * t
 				return true;
 			}
@@ -48,7 +49,7 @@ public class Sphere extends Shape {
 			t = (-b + e)/denom; // larger root
 			if (t > MathConst.EPSILON) {
 				tMin.setValue(t);
-				shadingInfo.setNormal( ray.getDirection().multiply(t).add(temp).divide(r) );
+				shadingInfo.setNormal( new Normal(ray.getDirection().multiply(t).add(temp).divide(r)) );
 				shadingInfo.setLocalHitPoint( ray.getOrigin().add(ray.getDirection().multiply(t)) );
 				return true;
 			}
