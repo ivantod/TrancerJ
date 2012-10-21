@@ -1,5 +1,7 @@
 package com.ivantod.trancer.primitive;
 
+import org.apache.commons.lang3.mutable.MutableDouble;
+
 import com.ivantod.trancer.geometry.Ray;
 import com.ivantod.trancer.scene.ShadingInfo;
 import com.ivantod.trancer.util.color.Color;
@@ -20,7 +22,7 @@ public class Sphere extends Shape {
 	}
 
 	@Override
-	public boolean intersect(Ray ray, double tMin, ShadingInfo shadingInfo) {
+	public boolean intersect(Ray ray, MutableDouble tMin, ShadingInfo shadingInfo) {
 		double t;
 		
 		Vector temp = ray.getOrigin().subtract(centre);
@@ -37,7 +39,7 @@ public class Sphere extends Shape {
 			double denom = 2.0 * a;
 			t = (-b - e)/denom;  // smaller root
 			if (t > MathConst.EPSILON) {
-				tMin = t;
+				tMin.setValue(t);
 				shadingInfo.setNormal( ray.getDirection().multiply(t).add(temp).divide(r) ); // (temp + ray.direction * t) / r
 				shadingInfo.setLocalHitPoint( ray.getOrigin().add(ray.getDirection().multiply(t)) ); // ray.origin + ray.direction * t
 				return true;
@@ -45,7 +47,7 @@ public class Sphere extends Shape {
 
 			t = (-b + e)/denom; // larger root
 			if (t > MathConst.EPSILON) {
-				tMin = t;
+				tMin.setValue(t);
 				shadingInfo.setNormal( ray.getDirection().multiply(t).add(temp).divide(r) );
 				shadingInfo.setLocalHitPoint( ray.getOrigin().add(ray.getDirection().multiply(t)) );
 				return true;
