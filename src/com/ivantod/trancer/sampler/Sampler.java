@@ -32,7 +32,7 @@ public abstract class Sampler {
 		this.numSets = numSets;
 		this.count = 0;
 		this.jump = 0;
-		//setupshuffled
+		setupShuffledIndices();
 	}
 	
 	public void setupShuffledIndices() {
