@@ -49,4 +49,12 @@ public class TGAFileSupport {
 	public void writePixel(Color c) {
 		writePixel(c.getR(), c.getG(), c.getB());
 	}
+	
+	public void closeFile() {
+		try {
+			f.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
