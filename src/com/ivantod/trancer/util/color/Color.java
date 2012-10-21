@@ -2,6 +2,7 @@ package com.ivantod.trancer.util.color;
 
 public class Color {
 
+	// Color component values are in range 0-1.
 	private double r;
 	private double g;
 	private double b;

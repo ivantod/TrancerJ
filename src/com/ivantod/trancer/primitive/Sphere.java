@@ -38,8 +38,8 @@ public class Sphere extends Shape {
 			t = (-b - e)/denom;  // smaller root
 			if (t > MathConst.EPSILON) {
 				tMin = t;
-				shadingInfo.setNormal( ray.getDirection().multiply(t).add(temp).divide(r) );
-				shadingInfo.setLocalHitPoint( ray.getOrigin().add(ray.getDirection().multiply(t)) );
+				shadingInfo.setNormal( ray.getDirection().multiply(t).add(temp).divide(r) ); // (temp + ray.direction * t) / r
+				shadingInfo.setLocalHitPoint( ray.getOrigin().add(ray.getDirection().multiply(t)) ); // ray.origin + ray.direction * t
 				return true;
 			}
 
