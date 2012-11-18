@@ -25,6 +25,36 @@ public abstract class Camera {
 	}
 	
 	public abstract void renderScene(Scene s);
+	
+	public void computeUnitVectors() {
+		w = eye.subtract(lookAt);
+		w.normalise();
+		u = up.crossProduct(w);
+		u.normalise();
+		v = w.crossProduct(u);
+
+		if (eye.getX() == lookAt.getX() && eye.getZ() == lookAt.getZ() && eye.getY() > lookAt.getY()) { // camera looking vertically down
+			u = new Vector(0, 0, 1);
+			v = new Vector(1, 0, 0);
+			w = new Vector(0, 1, 0);
+		}
+
+		if (eye.getX() == lookAt.getX() && eye.getZ() == lookAt.getZ() && eye.getY() < lookAt.getY()) { // camera looking vertically up
+			u = new Vector(1, 0, 0);
+			v = new Vector(0, 0, 1);
+			w = new Vector(0, -1, 0);
+		}
+
+		/* doesn't work, no rotation supported at the moment
+		if (rotAngle!=0) {
+			double radians = rotAngle*PI/180;
+			u.rotateZAxis(radians);
+			v.rotateZAxis(radians);
+			u.normalise();
+			v.normalise();
+		}
+		*/
+	}
 
 	
 	// getters and setters

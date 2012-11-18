@@ -28,6 +28,11 @@ public class Vector {
 		return x*v.getX() + y*v.getY() + z*v.getZ();
 	}
 	
+	public Vector crossProduct(Vector v) {
+		//return Vector(y*v.z-z*v.y, z*v.x-x*v.z, x*v.y-y*v.x);
+		return new Vector(y*v.getZ()-z*v.getY(), z*v.getX()-x*v.getZ(), x*v.getY()-y*v.getX());
+	}
+	
 	public Vector add(Vector v) {
 		return new Vector(x+v.getX(), y+v.getY(), z+v.getZ());
 	}

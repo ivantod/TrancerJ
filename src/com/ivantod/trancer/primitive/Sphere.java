@@ -16,7 +16,7 @@ public class Sphere extends Shape {
 	private Point centre;
 	
 	
-	public Sphere(double r, Point centre, Color color) {
+	public Sphere(Point centre, double r, Color color) {
 		this.r = r;
 		this.centre = centre;
 		this.color = color;
