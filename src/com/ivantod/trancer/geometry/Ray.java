@@ -1,7 +1,5 @@
 package com.ivantod.trancer.geometry;
 
-import com.ivantod.trancer.util.geom.Point;
-import com.ivantod.trancer.util.geom.Vector;
 
 public class Ray {
 

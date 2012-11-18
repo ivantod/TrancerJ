@@ -1,4 +1,4 @@
-package com.ivantod.trancer.util.geom;
+package com.ivantod.trancer.geometry;
 
 public class Point2D {
 

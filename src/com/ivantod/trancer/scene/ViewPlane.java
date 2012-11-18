@@ -26,19 +26,19 @@ public class ViewPlane {
 
 	// getters and setters
 	
-	public int gethRes() {
+	public int getHRes() {
 		return hRes;
 	}
 
-	public void sethRes(int hRes) {
+	public void setHRes(int hRes) {
 		this.hRes = hRes;
 	}
 
-	public int getvRes() {
+	public int getVRes() {
 		return vRes;
 	}
 
-	public void setvRes(int vRes) {
+	public void setVRes(int vRes) {
 		this.vRes = vRes;
 	}
 

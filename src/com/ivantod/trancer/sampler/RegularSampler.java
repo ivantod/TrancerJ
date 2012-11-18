@@ -1,6 +1,6 @@
 package com.ivantod.trancer.sampler;
 
-import com.ivantod.trancer.util.geom.Point2D;
+import com.ivantod.trancer.geometry.Point2D;
 
 public class RegularSampler extends Sampler {
 

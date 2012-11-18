@@ -3,11 +3,11 @@ package com.ivantod.trancer.primitive;
 import org.apache.commons.lang3.mutable.MutableDouble;
 
 import com.ivantod.trancer.geometry.Normal;
+import com.ivantod.trancer.geometry.Point;
 import com.ivantod.trancer.geometry.Ray;
+import com.ivantod.trancer.geometry.Vector;
 import com.ivantod.trancer.scene.ShadingInfo;
 import com.ivantod.trancer.util.color.Color;
-import com.ivantod.trancer.util.geom.Point;
-import com.ivantod.trancer.util.geom.Vector;
 import com.ivantod.trancer.util.math.MathConst;
 
 public class Sphere extends Shape {

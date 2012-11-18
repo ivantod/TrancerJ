@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.ivantod.trancer.util.geom.Point;
-import com.ivantod.trancer.util.geom.Point2D;
+import com.ivantod.trancer.geometry.Point;
+import com.ivantod.trancer.geometry.Point2D;
+import com.ivantod.trancer.util.math.MathFunc;
 
 public abstract class Sampler {
 
@@ -16,7 +17,7 @@ public abstract class Sampler {
 	protected List<Point> hemisphereSamples; // sample points on a unit hemisphere
 	protected List<Point> sphereSamples;
 	protected List<Integer> shuffledIndices;
-	protected long count; // the current number of sample points used
+	protected int count; // the current number of sample points used
 	protected int jump; // random jump
 	
 	public Sampler() {
@@ -50,6 +51,13 @@ public abstract class Sampler {
 	}
 	
 	public abstract void generateSamples();
+	
+	public Point2D sampleUnitSquare() {
+		if (count % numSamples == 0) {
+			jump = (MathFunc.randInt() % numSets) * numSamples;
+		}
+		return samples.get(jump + shuffledIndices.get(jump + count++ % numSamples));
+	}
 	
 	
 	// getters and setters
@@ -96,10 +104,10 @@ public abstract class Sampler {
 	public void setShuffledIndices(List<Integer> shuffledIndices) {
 		this.shuffledIndices = shuffledIndices;
 	}
-	public long getCount() {
+	public int getCount() {
 		return count;
 	}
-	public void setCount(long count) {
+	public void setCount(int count) {
 		this.count = count;
 	}
 	public int getJump() {

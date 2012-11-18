@@ -1,6 +1,5 @@
 package com.ivantod.trancer.geometry;
 
-import com.ivantod.trancer.util.geom.Vector;
 
 
 public class Normal {

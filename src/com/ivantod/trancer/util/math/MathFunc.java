@@ -18,4 +18,8 @@ public class MathFunc {
 		return randFloat() * (high - low) + low;
 	}
 	
+	public static int randInt() {
+		return random.nextInt();
+	}
+	
 }

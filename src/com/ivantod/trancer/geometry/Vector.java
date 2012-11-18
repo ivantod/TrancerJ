@@ -1,4 +1,4 @@
-package com.ivantod.trancer.util.geom;
+package com.ivantod.trancer.geometry;
 
 public class Vector {
 
@@ -30,6 +30,11 @@ public class Vector {
 	
 	public Vector add(Vector v) {
 		return new Vector(x+v.getX(), y+v.getY(), z+v.getZ());
+	}
+	
+	public void normalise() {
+		double length = Math.sqrt(x*x + y*y + z*z);
+		x /= length; y /= length; z /= length;
 	}
 	
 	

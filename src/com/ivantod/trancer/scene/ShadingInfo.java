@@ -1,8 +1,8 @@
 package com.ivantod.trancer.scene;
 
 import com.ivantod.trancer.geometry.Normal;
+import com.ivantod.trancer.geometry.Point;
 import com.ivantod.trancer.util.color.Color;
-import com.ivantod.trancer.util.geom.Point;
 
 public class ShadingInfo {
 

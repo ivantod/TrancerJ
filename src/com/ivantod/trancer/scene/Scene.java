@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ivantod.trancer.light.Light;
 import com.ivantod.trancer.primitive.Shape;
+import com.ivantod.trancer.raytracer.RayTracer;
 import com.ivantod.trancer.util.color.Color;
 
 public class Scene {
@@ -13,6 +14,10 @@ public class Scene {
 	private List<Light> lights = new ArrayList<Light>();
 	
 	private Color backgroundColor = new Color();
+	
+	private ViewPlane viewPlane;
+	
+	private RayTracer rayTracer;
 	
 	
 	public void addLight(Light l) {
@@ -38,4 +43,22 @@ public class Scene {
 	public void setBackgroundColor(Color backgroundColor) {
 		this.backgroundColor = backgroundColor;
 	}
+
+	public ViewPlane getViewPlane() {
+		return viewPlane;
+	}
+
+	public void setViewPlane(ViewPlane viewPlane) {
+		this.viewPlane = viewPlane;
+	}
+
+	public RayTracer getRayTracer() {
+		return rayTracer;
+	}
+
+	public void setRayTracer(RayTracer rayTracer) {
+		this.rayTracer = rayTracer;
+	}
+	
+	
 }

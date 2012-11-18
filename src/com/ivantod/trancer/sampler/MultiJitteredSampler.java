@@ -1,6 +1,6 @@
 package com.ivantod.trancer.sampler;
 
-import com.ivantod.trancer.util.geom.Point2D;
+import com.ivantod.trancer.geometry.Point2D;
 import com.ivantod.trancer.util.math.MathFunc;
 
 public class MultiJitteredSampler extends Sampler {
@@ -65,6 +65,12 @@ public class MultiJitteredSampler extends Sampler {
 			}
 		}
 
+	}
+
+	@Override
+	public Point2D sampleUnitSquare() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

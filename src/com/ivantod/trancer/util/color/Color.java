@@ -8,6 +8,7 @@ public class Color {
 	private double b;
 	
 	public Color() {
+		// Black colour as default.
 		this(0.0, 0.0, 0.0);
 	}
 	
@@ -55,6 +56,19 @@ public class Color {
 
 	public void setB(double b) {
 		this.b = b;
+	}
+
+	public void normaliseWith(int numSamples) {
+		r/=numSamples;
+		g/=numSamples;
+		g/=numSamples;
+		
+	}
+
+	public void addTo(Color c) {
+		r+=c.getR();
+		g+=c.getG();
+		b+=c.getB();
 	}
 	
 	
