@@ -13,7 +13,7 @@ public class PinholeCamera extends Camera {
 	private double zoom;
 	private double d; // view plane distance
 
-	PinholeCamera(Point eye, Point lookAt, float d) {
+	public PinholeCamera(Point eye, Point lookAt, float d) {
 		this.eye = eye;
 		this.lookAt = lookAt;
 		this.d = d;
@@ -23,7 +23,7 @@ public class PinholeCamera extends Camera {
 	private Vector calculateRayDirection(Point2D p) {
 		//Vector direction = u * p.x + v * p.y - w * d;
 		//direction.normalise();
-		Vector direction = u.multiply(p.getX()).add(v.multiply(p.getY())).add(w.multiply(d));
+		Vector direction = u.multiply(p.getX()).add(v.multiply(p.getY())).subtract(w.multiply(d));
 		direction.normalise();
 		
 		return direction;
@@ -47,7 +47,7 @@ public class PinholeCamera extends Camera {
 		int hRes = s.getViewPlane().getHRes();
 		int vRes = s.getViewPlane().getVRes();
 
-		TGAFileSupport tgaSupport = new TGAFileSupport("/Users/ivantod/test.tga");
+		TGAFileSupport tgaSupport = new TGAFileSupport("/Users/ivantod/java_test.tga");
 		tgaSupport.prepareHeader(hRes, vRes);
 
 		for (int row=0; row < vRes; row++) {
@@ -70,15 +70,23 @@ public class PinholeCamera extends Camera {
 
 						pixelColour.addTo(s.getRayTracer().traceRay(ray, s));
 					}
-
-					pixelColour.normaliseWith(s.getViewPlane().getNumSamples()); // normalise colour back to values in interval [0,1]
+					//String x = "("+pixelColour.getR()+","+pixelColour.getG()+","+pixelColour.getB()+") ";
+					
+					pixelColour.normaliseWith(s.getViewPlane().getNumSamples()); // Normalise colour back to values in interval [0,1]
+					
+					/*
+					if (!pixelColour.isBlack()) {
+						System.out.println(x+"/ "+s.getViewPlane().getNumSamples()+" --> "+pixelColour);
+					}
+					*/
 					//pixelColour *= exposureTime;
-
+					
 					//cout << pixelColour.red << " " << pixelColour.green << " " << pixelColour.blue << endl;
 				}
 				tgaSupport.writePixel(pixelColour);
 			}
 		}
+		tgaSupport.closeFile();
 
 	}
 

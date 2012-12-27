@@ -7,7 +7,7 @@ public class MathFunc {
 	private static Random random = new Random();
 	
 	public static int randInt(int low, int high) {
-		return random.nextInt(high - low) + low;
+		return random.nextInt(high - low + 1) + low;
 	}
 	
 	public static double randFloat() {
@@ -19,7 +19,9 @@ public class MathFunc {
 	}
 	
 	public static int randInt() {
-		return random.nextInt();
+		int i = Math.abs(random.nextInt());
+		if (i < 0) i = 0; // Correction for the case when i turns out to be Integer.MIN_VALUE after random call.
+		return i;
 	}
-	
+
 }

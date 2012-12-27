@@ -1,5 +1,7 @@
 package com.ivantod.trancer.sampler;
 
+import java.util.ArrayList;
+
 import com.ivantod.trancer.geometry.Point2D;
 import com.ivantod.trancer.util.math.MathFunc;
 
@@ -11,10 +13,12 @@ public class MultiJitteredSampler extends Sampler {
 	
 	public MultiJitteredSampler(int numSamples, int numSets) {
 		super(numSamples, numSets);
+		generateSamples();
 	}
 
 	public MultiJitteredSampler(int numSamples) {
 		super(numSamples);
+		generateSamples();
 	}
 
 
@@ -25,6 +29,8 @@ public class MultiJitteredSampler extends Sampler {
 		double subcellWidth = 1.0 / (numSamples);
 
 		// fill samples list with dummy points, to make life easier later.
+		
+		samples = new ArrayList<Point2D>(numSamples * numSets);
 		
 		for (int j = 0; j < numSamples * numSets; j++) samples.add(new Point2D());
 
@@ -67,10 +73,6 @@ public class MultiJitteredSampler extends Sampler {
 
 	}
 
-	@Override
-	public Point2D sampleUnitSquare() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

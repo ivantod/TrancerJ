@@ -19,6 +19,28 @@ public class Scene {
 	
 	private RayTracer rayTracer;
 	
+	private double zEye;
+	private double zDist;
+	
+	public Scene(ViewPlane viewPlane, RayTracer rayTracer, double zEye, double zDist) {
+		this.viewPlane = viewPlane;
+		this.rayTracer = rayTracer;
+		this.zEye = zEye;
+		this.zDist = zDist;
+		backgroundColor = new Color(0.0, 0.0, 0.0); // default background colour is black
+	}
+	
+	/*
+	Scene::Scene(ViewPlane viewPlane, RayTracer* rayTracer, double zEye, double zDist) :
+		viewPlane(viewPlane), ambientLight(new AmbientLight) {
+		backgroundColour.red = 0.0;
+		backgroundColour.green = 0.0;
+		backgroundColour.blue = 0.0;
+		this->rayTracer = rayTracer;
+		this->zEye = zEye;
+		this->zDist = zDist;
+	}
+	*/
 	
 	public void addLight(Light l) {
 		lights.add(l);
@@ -58,6 +80,22 @@ public class Scene {
 
 	public void setRayTracer(RayTracer rayTracer) {
 		this.rayTracer = rayTracer;
+	}
+
+	public double getZEye() {
+		return zEye;
+	}
+
+	public void setZEye(double zEye) {
+		this.zEye = zEye;
+	}
+
+	public double getZDist() {
+		return zDist;
+	}
+
+	public void setZDist(double zDist) {
+		this.zDist = zDist;
 	}
 	
 	

@@ -29,6 +29,7 @@ public class MultiObjectRayTracer implements RayTracer {
 			Shape s = shapes.get(i);
 			// cout << i << ",";
 			boolean hit = s.intersect(ray, t, shadingInfo);
+			//if (hit) System.out.println("HIT! "+s.getColor());
 			if (hit && t.getValue()<tMin) {
 				shadingInfo.setColor(s.getColor());
 				shadingInfo.setObjectHit(true);

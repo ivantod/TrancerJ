@@ -79,10 +79,10 @@ public class ViewPlane {
 		this.numSamples = numSamples;
 
 		if (numSamples>1) {
-			//cout << "    Setting MultiJitteredSampler with " << numSamples << endl;
+			System.out.println("    Setting MultiJitteredSampler with " + numSamples+ " samples.");
 			sampler = new MultiJitteredSampler(numSamples);
 		} else {
-			//cout << "    Setting RegularSampler with " << numSamples << endl;
+			System.out.println("    Setting RegularSampler with " + numSamples+ " samples.");
 			sampler = new RegularSampler(1);
 		}
 	}

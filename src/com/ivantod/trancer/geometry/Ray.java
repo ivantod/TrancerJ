@@ -20,5 +20,10 @@ public class Ray {
 	public void setDirection(Vector direction) {
 		this.direction = direction;
 	}
+	
+	@Override
+	public String toString() {
+		return "o="+origin.toString()+", d="+direction.toString();
+	}
 
 }

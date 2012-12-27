@@ -38,6 +38,7 @@ public abstract class Sampler {
 	
 	public void setupShuffledIndices() {
 		List<Integer> indices = new ArrayList<Integer>(numSamples * numSets);
+		shuffledIndices = new ArrayList<Integer>(numSamples * numSets);
 	
 		for (int j=0; j<numSamples; j++) indices.add(j);
 	

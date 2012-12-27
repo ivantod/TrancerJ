@@ -35,36 +35,38 @@ public class Trancer {
 		double zDist = 1000.0;
 
 
-		System.out.println("*** Trancer starting!\n");
+		System.out.println("*** Trancer starting!");
 
 		ViewPlane viewPlane = new ViewPlane(250, 250, zw, 1);
 		viewPlane.setNumSamples(25);
 
-		System.out.println("+++ ViewPlane initialised.\n");
+		System.out.println("+++ ViewPlane initialised.");
 
 		RayTracer tracer = new MultiObjectRayTracer();
 
-		System.out.println("+++ RayTracer initialised.\n");
+		System.out.println("+++ RayTracer initialised.");
 
 		Scene scene = new Scene(viewPlane, tracer, zEye, zDist);
 
-		System.out.println("+++ Scene initialised.\n");
+		System.out.println("+++ Scene initialised.");
 
 		buildScene(scene);
 
-		System.out.println("+++ Scene built.\n");
+		System.out.println("+++ Scene built.");
 
 		Camera camera = new PinholeCamera(new Point(300,400,500), new Point(0,0,-50), 500);
 		camera.computeUnitVectors();
 
-		System.out.println("+++ Camera initialised.\n");
+		System.out.println("+++ Camera initialised.");
 
+		System.out.println("+++ Rendering started.");
+		
 		camera.renderScene(scene);
 
 		//scene->renderScene();
 		//scene->renderPerspective();
 
-		System.out.println("+++ Scene rendered.\n");
+		System.out.println("+++ Scene rendered.");
 
 	}
 	

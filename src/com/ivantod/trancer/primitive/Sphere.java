@@ -25,10 +25,17 @@ public class Sphere extends Shape {
 	@Override
 	public boolean intersect(Ray ray, MutableDouble tMin, ShadingInfo shadingInfo) {
 		double t;
-		
+		/*
+		Vector temp = ray.origin - centre;
+		double a = ray.direction * ray.direction;
+		double b = 2.0 * (temp * ray.direction);
+		double c = temp * temp - r * r;
+
+		double discriminant = b*b - 4*a*c;
+		*/
 		Vector temp = ray.getOrigin().subtract(centre);
 		double a = ray.getDirection().dotProduct(ray.getDirection());
-		double b = 2.0 * (temp.dotProduct(ray.getDirection()));
+		double b = 2.0 * temp.dotProduct(ray.getDirection());
 		double c = temp.dotProduct(temp) - r * r;
 
 		double discriminant = b*b - 4*a*c;

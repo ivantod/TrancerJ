@@ -37,6 +37,10 @@ public class Vector {
 		return new Vector(x+v.getX(), y+v.getY(), z+v.getZ());
 	}
 	
+	public Vector subtract(Vector v) {
+		return new Vector(x-v.getX(), y-v.getY(), z-v.getZ());
+	}
+	
 	public void normalise() {
 		double length = Math.sqrt(x*x + y*y + z*z);
 		x /= length; y /= length; z /= length;
@@ -67,5 +71,10 @@ public class Vector {
 
 	public void setZ(double z) {
 		this.z = z;
+	}
+	
+	@Override
+	public String toString() {
+		return "(" + x + "," + y + "," + z + ")";
 	}
 }

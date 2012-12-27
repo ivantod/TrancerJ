@@ -1,5 +1,7 @@
 package com.ivantod.trancer.util.color;
 
+import com.ivantod.trancer.util.math.MathConst;
+
 public class Color {
 
 	// Color component values are in range 0-1.
@@ -30,6 +32,9 @@ public class Color {
 		r/=a; g/=a;	b/=a;
 	}
 	
+	public boolean isBlack() {
+		return r < MathConst.EPSILON && g < MathConst.EPSILON && b < MathConst.EPSILON;
+	}
 
 	
 	// getters and setters
@@ -61,7 +66,7 @@ public class Color {
 	public void normaliseWith(int numSamples) {
 		r/=numSamples;
 		g/=numSamples;
-		g/=numSamples;
+		b/=numSamples;
 		
 	}
 
@@ -71,5 +76,8 @@ public class Color {
 		b+=c.getB();
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "(" + r + "," + g + "," + b + ")";
+	}
 }
