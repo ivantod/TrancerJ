@@ -3,6 +3,7 @@ package com.ivantod.trancer.scene;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ivantod.trancer.light.AmbientLight;
 import com.ivantod.trancer.light.Light;
 import com.ivantod.trancer.primitive.Shape;
 import com.ivantod.trancer.raytracer.RayTracer;
@@ -12,6 +13,8 @@ public class Scene {
 
 	private List<Shape> shapes = new ArrayList<Shape>();
 	private List<Light> lights = new ArrayList<Light>();
+	
+	private Light ambient;
 	
 	private Color backgroundColor = new Color();
 	
@@ -28,6 +31,7 @@ public class Scene {
 		this.zEye = zEye;
 		this.zDist = zDist;
 		backgroundColor = new Color(0.0, 0.0, 0.0); // default background colour is black
+		ambient = new AmbientLight(); // create a default ambient light with white colour
 	}
 	
 	/*
@@ -96,6 +100,14 @@ public class Scene {
 
 	public void setZDist(double zDist) {
 		this.zDist = zDist;
+	}
+
+	public Light getAmbient() {
+		return ambient;
+	}
+
+	public void setAmbient(Light ambient) {
+		this.ambient = ambient;
 	}
 	
 	

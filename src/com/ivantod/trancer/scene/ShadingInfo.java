@@ -8,6 +8,7 @@ public class ShadingInfo {
 
 	private Normal normal = new Normal();
 	private Point localHitPoint = new Point();
+	private Point hitPoint = new Point();
 	private boolean objectHit = false;
 	private Color color = new Color();
 	private Scene scene;
@@ -55,6 +56,16 @@ t = 0;*/
 	}
 	public void setColor(Color color) {
 		this.color = color;
+	}
+
+
+	public Point getHitPoint() {
+		return hitPoint;
+	}
+
+
+	public void setHitPoint(Point hitPoint) {
+		this.hitPoint = hitPoint;
 	}
 	
 	

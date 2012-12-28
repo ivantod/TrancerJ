@@ -41,11 +41,19 @@ public class Vector {
 		return new Vector(x-v.getX(), y-v.getY(), z-v.getZ());
 	}
 	
+	public Vector subtract(Point p) {
+		return new Vector(x-p.getX(), y-p.getY(), z-p.getZ());
+	}
+	
 	public void normalise() {
 		double length = Math.sqrt(x*x + y*y + z*z);
 		x /= length; y /= length; z /= length;
 	}
 	
+	public Vector hat() {
+		normalise();
+		return this;
+	}
 	
 	// getters and setters
 	
@@ -77,4 +85,6 @@ public class Vector {
 	public String toString() {
 		return "(" + x + "," + y + "," + z + ")";
 	}
+
+	
 }
