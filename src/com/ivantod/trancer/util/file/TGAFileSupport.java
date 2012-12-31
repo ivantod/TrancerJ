@@ -3,16 +3,30 @@ package com.ivantod.trancer.util.file;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import com.ivantod.trancer.util.color.Color;
 
 public class TGAFileSupport {
+	
+	public static String DEFAULT_IMAGE_FOLDER = "/Users/ivantod/";
 	
 	RandomAccessFile f;
 
 	public TGAFileSupport(String filePath) {
 		try {
 			f = new RandomAccessFile(filePath, "rw");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public TGAFileSupport() {
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMDDHHmmss");
+		String fileName="render_"+df.format(new Date())+".tga";
+		try {
+			f = new RandomAccessFile(DEFAULT_IMAGE_FOLDER+fileName, "rw");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

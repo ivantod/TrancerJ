@@ -7,5 +7,6 @@ import com.ivantod.trancer.util.color.Color;
 public interface RayTracer {
 	
 	public Color traceRay(Ray ray, Scene scene);
+	
 
 }

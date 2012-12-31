@@ -13,7 +13,7 @@ public class PinholeCamera extends Camera {
 	private double zoom;
 	private double d; // view plane distance
 
-	public PinholeCamera(Point eye, Point lookAt, float d) {
+	public PinholeCamera(Point eye, Point lookAt, double d) {
 		this.eye = eye;
 		this.lookAt = lookAt;
 		this.d = d;
@@ -47,7 +47,7 @@ public class PinholeCamera extends Camera {
 		int hRes = s.getViewPlane().getHRes();
 		int vRes = s.getViewPlane().getVRes();
 
-		TGAFileSupport tgaSupport = new TGAFileSupport("/Users/ivantod/java_test.tga");
+		TGAFileSupport tgaSupport = new TGAFileSupport();
 		tgaSupport.prepareHeader(hRes, vRes);
 
 		for (int row=0; row < vRes; row++) {

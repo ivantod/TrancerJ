@@ -10,7 +10,7 @@ public class Lambertian implements BRDF {
 	double kd;
 	Color cd;
 	
-	Lambertian(double kd, Color cd) {
+	public Lambertian(double kd, Color cd) {
 		this.kd = kd;
 		this.cd = cd;
 	}

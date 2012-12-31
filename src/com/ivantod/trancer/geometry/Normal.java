@@ -24,6 +24,14 @@ public class Normal {
 		this.z = v.getZ();
 	}
 	
+	public double dotProduct(Normal n) {
+		return x*n.getX() + y*n.getY() + z*n.getZ();
+	}
+	
+	public double dotProduct(Vector v) {
+		return x*v.getX() + y*v.getY() + z*v.getZ();
+	}
+	
 	// getters and setters
 	
 	public double getX() {

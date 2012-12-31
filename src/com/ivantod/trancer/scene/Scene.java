@@ -3,6 +3,11 @@ package com.ivantod.trancer.scene;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.mutable.MutableDouble;
+
+import com.ivantod.trancer.geometry.Normal;
+import com.ivantod.trancer.geometry.Point;
+import com.ivantod.trancer.geometry.Ray;
 import com.ivantod.trancer.light.AmbientLight;
 import com.ivantod.trancer.light.Light;
 import com.ivantod.trancer.primitive.Shape;
@@ -34,17 +39,37 @@ public class Scene {
 		ambient = new AmbientLight(); // create a default ambient light with white colour
 	}
 	
-	/*
-	Scene::Scene(ViewPlane viewPlane, RayTracer* rayTracer, double zEye, double zDist) :
-		viewPlane(viewPlane), ambientLight(new AmbientLight) {
-		backgroundColour.red = 0.0;
-		backgroundColour.green = 0.0;
-		backgroundColour.blue = 0.0;
-		this->rayTracer = rayTracer;
-		this->zEye = zEye;
-		this->zDist = zDist;
+	public ShadingInfo hitObject(Ray ray) {
+		ShadingInfo shadingInfo = new ShadingInfo(this);
+		MutableDouble t = new MutableDouble(0);
+		double tMin = Double.MAX_VALUE;
+		Point localHitPoint = null;
+		Normal normal = null;
+		
+		for (Shape shape : shapes) {
+			if (shape.intersect(ray, t, shadingInfo) && t.getValue() < tMin) {
+				tMin = t.getValue();
+				shadingInfo.setObjectHit(true);
+				shadingInfo.setMaterial(shape.getMaterial());
+				shadingInfo.setHitPoint(ray.getOrigin().add(ray.getDirection().multiply(t.getValue())));
+				
+				// Below two lines are safe to do because localHitPoint and normal in shadingInfo get assigned
+				// new reference pointers in every iteration of the loop so the old one is not overwritten.
+				localHitPoint = shadingInfo.getLocalHitPoint();
+				normal = shadingInfo.getNormal();
+			}
+		}
+		
+		if (shadingInfo.isObjectHit()) {
+			shadingInfo.setT(tMin);
+			shadingInfo.setLocalHitPoint(localHitPoint);
+			shadingInfo.setNormal(normal);
+			shadingInfo.setRay(ray);
+		}
+		
+		return shadingInfo;
+		
 	}
-	*/
 	
 	public void addLight(Light l) {
 		lights.add(l);

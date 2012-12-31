@@ -6,6 +6,7 @@ import com.ivantod.trancer.geometry.Normal;
 import com.ivantod.trancer.geometry.Point;
 import com.ivantod.trancer.geometry.Ray;
 import com.ivantod.trancer.geometry.Vector;
+import com.ivantod.trancer.material.Material;
 import com.ivantod.trancer.scene.ShadingInfo;
 import com.ivantod.trancer.util.color.Color;
 import com.ivantod.trancer.util.math.MathConst;
@@ -16,10 +17,15 @@ public class Sphere extends Shape {
 	private Point centre;
 	
 	
-	public Sphere(Point centre, double r, Color color) {
+	public Sphere(Point centre, double r, Color color, Material material) {
 		this.r = r;
 		this.centre = centre;
 		this.color = color;
+		this.material = material;
+	}
+	
+	public Sphere(Point centre, double r, Color color) {
+		this(centre, r, color, null);
 	}
 
 	@Override

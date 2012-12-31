@@ -28,6 +28,10 @@ public class Color {
 		return new Color(r*a, g*a, b*a);
 	}
 	
+	public Color multiply(Color c) {
+		return new Color(r*c.getR(), g*c.getG(), b*c.getB());
+	}
+	
 	public void divideBy(double a) {
 		r/=a; g/=a;	b/=a;
 	}
