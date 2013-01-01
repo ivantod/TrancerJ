@@ -12,7 +12,8 @@ public class GlossySpecular implements BRDF {
 	
 	public GlossySpecular(double ks, Color cs, double exp) {
 		this.ks = ks;
-		this.cs = cs; //new Color (1.0, 1.0, 1.0); //cs;
+		//this.cs = cs;
+		this.cs = new Color (1.0, 1.0, 1.0); // Here this should be the colour of the light, not the object.
 		this.exp = exp;
 	}
 	
