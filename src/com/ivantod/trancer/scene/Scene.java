@@ -64,7 +64,7 @@ public class Scene {
 			shadingInfo.setT(tMin);
 			shadingInfo.setLocalHitPoint(localHitPoint);
 			shadingInfo.setNormal(normal);
-			shadingInfo.setRay(ray);
+			//shadingInfo.setRay(ray);
 		}
 		
 		return shadingInfo;

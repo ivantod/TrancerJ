@@ -80,6 +80,10 @@ public class Color {
 		b+=c.getB();
 	}
 	
+	public Color add(Color c) {
+		return new Color(r+c.getR(), g+c.getG(), b+c.getB());
+	}
+	
 	@Override
 	public String toString() {
 		return "(" + r + "," + g + "," + b + ")";

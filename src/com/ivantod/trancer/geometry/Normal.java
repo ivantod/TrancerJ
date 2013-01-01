@@ -32,6 +32,23 @@ public class Normal {
 		return x*v.getX() + y*v.getY() + z*v.getZ();
 	}
 	
+	public Normal multiply(double a) {
+		return new Normal(x*a, y*a, z*a);
+	}
+	
+	public Normal add(Normal v) {
+		return new Normal(x+v.getX(), y+v.getY(), z+v.getZ());
+	}
+	
+	public Vector add(Vector v) {
+		return new Vector(x+v.getX(), y+v.getY(), z+v.getZ());
+	}
+	
+	public Normal subtract(Normal v) {
+		return new Normal(x-v.getX(), y-v.getY(), z-v.getZ());
+	}
+	
+	
 	// getters and setters
 	
 	public double getX() {

@@ -18,7 +18,7 @@ public class RayCaster implements RayTracer {
 	public Color traceRay(Ray ray, Scene scene) {
 		ShadingInfo shadingInfo = new ShadingInfo(scene.hitObject(ray));
 		if (shadingInfo.isObjectHit()) {
-			// shadingInfo.setRay(ray); // for specular reflection.
+			shadingInfo.setRay(ray); // for specular reflection.
 			return shadingInfo.getMaterial().shade(shadingInfo);
 		}  else {
 			return scene.getBackgroundColor();
