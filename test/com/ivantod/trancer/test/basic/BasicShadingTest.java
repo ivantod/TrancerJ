@@ -237,12 +237,14 @@ public class BasicShadingTest {
 		
 		PointLight pointLight = new PointLight(new Vector(460, 440, 300));
 		pointLight.setLs(3.0);
+		pointLight.setCastsShadow(false);
 		scene.addLight(pointLight);
 		
 		pointLight = new PointLight(new Vector(-460, 440, 300));
 		pointLight.setLs(3.0);
+		pointLight.setCastsShadow(false);
 		scene.addLight(pointLight);
-
+    
 		Shape shape = new Sphere(new Point(0.0,-50.0, 0.0), 160.0, red);
 		Phong phong = new Phong(0.25, 0.65, 0.2, phongExp, red);
 		shape.setMaterial(phong);

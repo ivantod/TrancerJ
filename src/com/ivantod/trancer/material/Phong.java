@@ -2,6 +2,7 @@ package com.ivantod.trancer.material;
 
 import com.ivantod.trancer.brdf.GlossySpecular;
 import com.ivantod.trancer.brdf.Lambertian;
+import com.ivantod.trancer.geometry.Ray;
 import com.ivantod.trancer.geometry.Vector;
 import com.ivantod.trancer.light.Light;
 import com.ivantod.trancer.scene.ShadingInfo;
@@ -39,7 +40,15 @@ public class Phong implements Material {
 			double nDotWi = shadingInfo.getNormal().dotProduct(wi);
 			
 			if (nDotWi > 0.0) {
-				luminance.addTo(diffuseBrdf.f(shadingInfo, wi, wo).add(specularBrdf.f(shadingInfo, wi, wo)).multiply(light.luminance(shadingInfo)).multiply(nDotWi));
+				boolean inShadow = false;
+				if (light.castsShadow()) {
+					Ray shadowRay = new Ray(shadingInfo.getHitPoint(), wi);
+					inShadow = light.inShadow(shadowRay, shadingInfo);
+				}
+				
+				if (!inShadow) {
+					luminance.addTo(diffuseBrdf.f(shadingInfo, wi, wo).add(specularBrdf.f(shadingInfo, wi, wo)).multiply(light.luminance(shadingInfo)).multiply(nDotWi));
+				}
 			}
 		}
 		

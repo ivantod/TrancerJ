@@ -13,6 +13,8 @@ public abstract class Shape {
 	protected Material material;
 	
 	public abstract boolean intersect(Ray ray, MutableDouble tMin, ShadingInfo shadingInfo);
+	
+	public abstract boolean shadowIntersect(Ray ray, MutableDouble tMin);
 
 	public Color getColor() {
 		return color;

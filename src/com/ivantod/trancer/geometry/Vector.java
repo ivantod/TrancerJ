@@ -55,6 +55,10 @@ public class Vector {
 		return this;
 	}
 	
+	public double distance(Point p) {
+		return Math.sqrt((x-p.getX())*(x-p.getX()) + (y-p.getY())*(y-p.getY()) + (z-p.getZ())* (z-p.getZ()));
+	}
+	
 	// getters and setters
 	
 	public double getX() {

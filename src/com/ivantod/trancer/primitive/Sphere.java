@@ -31,14 +31,7 @@ public class Sphere extends Shape {
 	@Override
 	public boolean intersect(Ray ray, MutableDouble tMin, ShadingInfo shadingInfo) {
 		double t;
-		/*
-		Vector temp = ray.origin - centre;
-		double a = ray.direction * ray.direction;
-		double b = 2.0 * (temp * ray.direction);
-		double c = temp * temp - r * r;
-
-		double discriminant = b*b - 4*a*c;
-		*/
+	
 		Vector temp = ray.getOrigin().subtract(centre);
 		double a = ray.getDirection().dotProduct(ray.getDirection());
 		double b = 2.0 * temp.dotProduct(ray.getDirection());
@@ -64,6 +57,39 @@ public class Sphere extends Shape {
 				tMin.setValue(t);
 				shadingInfo.setNormal( new Normal(ray.getDirection().multiply(t).add(temp).divide(r)) );
 				shadingInfo.setLocalHitPoint( ray.getOrigin().add(ray.getDirection().multiply(t)) );
+				return true;
+			}
+		}
+
+		return false;
+	}
+	
+	@Override
+	public boolean shadowIntersect(Ray ray, MutableDouble tMin) {
+		double t;
+	
+		Vector temp = ray.getOrigin().subtract(centre);
+		double a = ray.getDirection().dotProduct(ray.getDirection());
+		double b = 2.0 * temp.dotProduct(ray.getDirection());
+		double c = temp.dotProduct(temp) - r * r;
+
+		double discriminant = b*b - 4*a*c;
+
+		if (discriminant<0.0) {
+			return false;
+		} else {
+			double e = Math.sqrt(discriminant);
+			double denom = 2.0 * a;
+			
+			t = (-b - e)/denom;  // smaller root
+			if (t > MathConst.EPSILON) {
+				tMin.setValue(t);
+				return true;
+			}
+
+			t = (-b + e)/denom; // larger root
+			if (t > MathConst.EPSILON) {
+				tMin.setValue(t);
 				return true;
 			}
 		}
